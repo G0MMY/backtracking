@@ -1,17 +1,8 @@
 import React, { useState } from "react";
 import { finalGrid, initializer, solver, visualization_array } from "./solver";
 import { number_grid } from "./solver";
-//import { useFetch } from "./useFetch";
 
 export const Grid = () =>{
-    // interface Board{
-    //     board:number[][]
-    // }
-
-    // interface State{
-    //     data:Board|null
-    //     loading:boolean
-    // }
 
     let speed = 50
 
@@ -77,8 +68,6 @@ export const Grid = () =>{
         return result
     }
     
-    // const [difficulty, setDifficulty] = useState("easy")
-    // const {data, loading}:State = useFetch("https://sugoku.herokuapp.com/board?difficulty="+difficulty)
     const [grid, setGrid] = useState(initializer(number_grid))
     const [div_grid, setDivGrid] = useState(grid_maker(grid, true))
     const SUDOKU = finalGrid(grid)
@@ -94,18 +83,8 @@ export const Grid = () =>{
                 number_grid[ROW][COL]=parseInt(ELEM.value)
                 setGrid(number_grid)
                 setDivGrid(grid_maker(grid, true))
-                // if (!findEmpty){
-                //     document.getElementById("win")!.style.visibility="visible"
-                // }
             } else {
                 ELEM.value=""
-                // lives+=1
-                // if (lives>=3 && doc("lose")){
-                //     document.getElementById("lose")!.style.visibility="visible"
-                // } else if (doc("red_x_"+lives)){
-                //     document.getElementById("red_x_"+lives)!.style.visibility="visible"
-                    
-                // }
             }
         }
     }
@@ -162,12 +141,6 @@ export const Grid = () =>{
     }
 
     const reload = ()=>{
-        // for (let i=1;i<=lives;i++){
-        //     document.getElementById("red_x_"+i)!.style.visibility="hidden"
-        // }
-        // document.getElementById("lose")!.style.visibility="hidden"
-        // document.getElementById("win")!.style.visibility="hidden"
-        // lives=0
         setGrid(initializer(number_grid))
         setDivGrid(grid_maker(grid, true))
     }
@@ -191,25 +164,3 @@ export const Grid = () =>{
         
     )
 }
-
-/* <div>
-                <label>Difficulty: { difficulty }</label>
-                <ul id="difficulty">
-                    <li onClick={()=>{
-                        setDifficulty("easy")
-                        setGrid(data!.board)
-                        setDivGrid(grid_maker(grid, true))}}>easy</li>
-                    <li onClick={()=>{
-                        setDifficulty("medium")
-                        setGrid(data!.board)
-                        setDivGrid(grid_maker(grid, true))}}>medium</li>
-                    <li onClick={()=>{
-                        setDifficulty("hard")
-                        setGrid(data!.board)
-                        setDivGrid(grid_maker(grid, true))}}>hard</li>
-                    <li onClick={()=>{
-                        setDifficulty("random")
-                        setGrid(data!.board)
-                        setDivGrid(grid_maker(grid, true))}}>random</li>
-                </ul>
-            </div>  */
